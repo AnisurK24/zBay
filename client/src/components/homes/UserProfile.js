@@ -55,12 +55,15 @@ const UserProfile = () => {
      
                     // return home.map(hm => {
                       const imageSettings = {
+                        // centerMode: true,
                         infinite: true,
                         speed: 500,
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         className: "index-slider",
-                        adaptiveHeight: true
+                        adaptiveHeight: true,
+                        fade: true,
+                        cssEase: 'linear'
                       };
 
                       let images;
@@ -76,6 +79,8 @@ const UserProfile = () => {
                     // debugger;
                     if (hm.bids.length > 0) {
                       maybeTimer = <Timer date={hm.bids[0].date} />;
+                    } else {
+                      maybeTimer = <div className="timer-container" />
                     }
                     return <div className="profile-card" key={i}>
                         <Link key={hm._id} to={`/homes/${hm._id}`}>
@@ -90,7 +95,7 @@ const UserProfile = () => {
                             </div>
                             <div className="profile-bottom">
                               <h2>{hm.name}</h2>
-                              <h3>Click to See Listing</h3>
+                              {/* <h3>Click to See Listing</h3> */}
                             </div>
                           </li>
                         </Link>
